@@ -1,0 +1,765 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Ruby学习笔记（二）类和实例类表示对象的种类。Ruby中的对象都一定属于某个类。
+类就像是对象的雏形和设计图。
+我们在生成新的对象时，一般会用到各个类的new方法。
+class关键字在定义类时使用。
+123class 类名  类的定义end
+当想知道每个对象属于哪个类是，我们可以使用class方法。
+当判断每个对象是否属于某个类时，我们可以使用Instance_of? 方法。
+根据类的继承关系反">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机反思">
+<meta property="og:url" content="http://yoursite.com/2017/05/19/Ruby学习笔记（二）/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Ruby学习笔记（二）类和实例类表示对象的种类。Ruby中的对象都一定属于某个类。
+类就像是对象的雏形和设计图。
+我们在生成新的对象时，一般会用到各个类的new方法。
+class关键字在定义类时使用。
+123class 类名  类的定义end
+当想知道每个对象属于哪个类是，我们可以使用class方法。
+当判断每个对象是否属于某个类时，我们可以使用Instance_of? 方法。
+根据类的继承关系反">
+<meta property="og:updated_time" content="2017-05-19T10:35:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机反思">
+<meta name="twitter:description" content="Ruby学习笔记（二）类和实例类表示对象的种类。Ruby中的对象都一定属于某个类。
+类就像是对象的雏形和设计图。
+我们在生成新的对象时，一般会用到各个类的new方法。
+class关键字在定义类时使用。
+123class 类名  类的定义end
+当想知道每个对象属于哪个类是，我们可以使用class方法。
+当判断每个对象是否属于某个类时，我们可以使用Instance_of? 方法。
+根据类的继承关系反">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/19/Ruby学习笔记（二）/"/>
+
+
+
+
+
+  <title> 计算机反思 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-categories"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/19/Ruby学习笔记（二）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="薛少杰">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                计算机反思
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T10:32:27+08:00">
+                2017-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/反思日志/" itemprop="url" rel="index">
+                    <span itemprop="name">反思日志</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Ruby学习笔记（二）"><a href="#Ruby学习笔记（二）" class="headerlink" title="Ruby学习笔记（二）"></a>Ruby学习笔记（二）</h1><h2 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h2><p>类表示对象的种类。Ruby中的对象都一定属于某个类。</p>
+<p>类就像是对象的雏形和设计图。</p>
+<p>我们在生成新的对象时，一般会用到各个类的new方法。</p>
+<p>class关键字在定义类时使用。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> 类名</span></div><div class="line">  类的定义</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>当想知道每个对象属于哪个类是，我们可以使用class方法。</p>
+<p>当判断每个对象是否属于某个类时，我们可以使用Instance_of? 方法。</p>
+<p>根据类的继承关系反向追查对象是否属于某个类时，则可以使用is_a? 方法。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ary = []</div><div class="line">p ary.<span class="keyword">class</span> <span class="comment"># =&gt;Array</span></div><div class="line">p ary.instance_of?(Array) <span class="comment"># =&gt;true</span></div><div class="line">p ary.instance_of?(Object) <span class="comment"># =&gt; false</span></div><div class="line"></div><div class="line">p ary.is_a?(Array) <span class="comment"># =&gt;true</span></div><div class="line">p ary.is_a?(Object) <span class="comment"># =&gt; true</span></div></pre></td></tr></table></figure>
+<h3 id="initialize方法"><a href="#initialize方法" class="headerlink" title="initialize方法"></a>initialize方法</h3><p>使用new方法生成新的对象时，intiialize方法会被调用，同时new方法的参数会原封不动地传给initialize方法。因此初始化对象时需要的程序都写在这个方法中。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(myname = <span class="string">"One"</span> )</span></span></div><div class="line">    @name = myname</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">one</span></span></div><div class="line">    @one</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">one=</span> <span class="params">(value)</span></span> <span class="comment">#形式需要注意,=后面可以有空格，也可以没有。</span></div><div class="line">    @one = value</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hi</span></span></div><div class="line">    puts <span class="string">"Hello, I am <span class="subst">#&#123;@name&#125;</span>."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">greet</span></span></div><div class="line">    puts <span class="string">"Hi, I am <span class="subst">#&#123;<span class="keyword">self</span>.one&#125;</span>"</span> <span class="comment">#self.one引用了调用greet方法时的接收者。调用方法是，如果省略了接受者，Ruby佳慧默认把self作为该方法的接收者。去掉self，也可以调用one方法。</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">tom = Hello.new(<span class="string">"Tom"</span>)</div><div class="line">tom1 = Hello.new</div><div class="line"></div><div class="line">tom.hi <span class="comment"># =&gt;Hello, I am Tom.</span></div><div class="line">tom.greet <span class="comment"># =&gt;Hi, I am</span></div><div class="line">tom1.hi <span class="comment"># =&gt;Hello, I am One.</span></div><div class="line"></div><div class="line"></div><div class="line">bob = Hello.new</div><div class="line">p bob.one <span class="comment"># =&gt;nil</span></div><div class="line">bob.one = <span class="string">"Three"</span></div><div class="line">p bob.one <span class="comment"># =&gt;"Three"</span></div><div class="line">bob.greet <span class="comment"># =&gt;Hi, I am Three</span></div></pre></td></tr></table></figure>
+<h3 id="存取器的定义"><a href="#存取器的定义" class="headerlink" title="存取器的定义"></a>存取器的定义</h3><table>
+<thead>
+<tr>
+<th>定义</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attr_reader :name</td>
+<td>只读（定义name方法）</td>
+</tr>
+<tr>
+<td>attr_writer :name</td>
+<td>只写（定义name= 方法）</td>
+</tr>
+<tr>
+<td>attr_accessor :name</td>
+<td>读写（定义以上两个方法）</td>
+</tr>
+</tbody>
+</table>
+<p>Ruby中一般把设定实例变量的方法称为writer，读取实例变量的方法称为reader方法，这两个方法合称为accessor。有时把reader称为getter，writer称为setter，合称为accessor method。</p>
+<h3 id="实例方法和实例变量"><a href="#实例方法和实例变量" class="headerlink" title="实例方法和实例变量"></a>实例方法和实例变量</h3><p>我们把已@开头的变量称为实例变量。在不同的方法中，程序会把局部变量看作是不同的变量来对待。而只要在同一个实例中，程序就可以超越方法定义，任意引用、修改实例变量的值。另外，引用未初始化的实例变量是的返回值为nil。</p>
+<p>不同实例的实例变量值可以不同。只要实例存在，实例变量的值就不会消失，并且可以被任意使用。而局部变量则是在调用方法时被创建，而且只能在该方法内使用。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 实例方法的定义有以下三种方式</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hi</span><span class="params">(name)</span></span></div><div class="line">    puts <span class="string">"<span class="subst">#&#123;name&#125;</span> is .."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line">Hello.new.hi(<span class="string">"Two"</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hi</span></span></div><div class="line">  <span class="keyword">attr_accessor</span> <span class="symbol">:name</span></div><div class="line"><span class="keyword">end</span></div><div class="line">hi = Hi.new</div><div class="line">hi.name = <span class="string">"name"</span></div><div class="line">puts hi.name</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hi</span></span></div><div class="line"><span class="keyword">end</span></div><div class="line">hi = Hi.new</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hi</span>.<span class="title">name</span></span></div><div class="line">  puts <span class="string">"I am "</span></div><div class="line"><span class="keyword">end</span></div><div class="line">hi.name</div></pre></td></tr></table></figure>
+<h3 id="类方法和类变量"><a href="#类方法和类变量" class="headerlink" title="类方法和类变量"></a>类方法和类变量</h3><p>方法的接受这就是类本身（类对象）的方法称为类方法。</p>
+<p>class &lt;&lt; 类名 ~ end这种写法的类定义成为单例类定义，单例类定义中定义成的方法称为单例方法。</p>
+<p>以@@开头的变量称为类变量。类变量是该类所有实例的共享变量，这一点与常量类似，不同的是我们可以多次修改类变量的值。从类的外部访问类变量是需要存取器。（自己定义）</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 类方法的定义有以下四种方式</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> &lt;&lt; Hello</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hi</span><span class="params">(name)</span></span></div><div class="line">    puts <span class="string">"<span class="subst">#&#123;name&#125;</span> is ..."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">Hello.hi(<span class="string">"One"</span>) <span class="comment"># =&gt;One is ...</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span></div><div class="line">  <span class="class"><span class="keyword">class</span> &lt;&lt; self <span class="comment">#在class上下文中使用self时，引用的对象是该类本身。</span></span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hi</span><span class="params">(name)</span></span></div><div class="line">      puts <span class="string">"<span class="subst">#&#123;name&#125;</span> is ..."</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line">Hello.hi(<span class="string">"One"</span>) <span class="comment"># =&gt;One is ...</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Hello</span>.<span class="title">hi</span><span class="params">(name)</span></span></div><div class="line">  puts <span class="string">"<span class="subst">#&#123;name&#125;</span> is ..."</span></div><div class="line"><span class="keyword">end</span></div><div class="line">Hello.hi(<span class="string">"One"</span>) <span class="comment"># =&gt;One is ...</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">hi</span><span class="params">(name)</span></span></div><div class="line">    puts <span class="string">"<span class="subst">#&#123;name&#125;</span> is ..."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line">Hello.hi(<span class="string">"One"</span>) <span class="comment"># =&gt;One is ...</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 类变量</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hi</span></span></div><div class="line">  @@count = <span class="number">0</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Hi</span>.<span class="title">count</span></span></div><div class="line">    @@count</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">initialize</span><span class="params">(name=<span class="string">"Tom"</span>)</span></span></div><div class="line">    @name = name</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hello</span></span></div><div class="line">    @@count += <span class="number">1</span></div><div class="line">    puts <span class="string">"Hello. I am ..."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p Hi.count <span class="comment"># =&gt;0</span></div><div class="line">one = Hi.new(<span class="string">"One"</span>)</div><div class="line">puts one.hello <span class="comment"># =&gt;Hello. I am ...</span></div><div class="line">p Hi.count <span class="comment"># =&gt;1</span></div><div class="line">two = Hi.new(<span class="string">"Two"</span>)</div><div class="line">puts two.hello <span class="comment"># =&gt;Hello. I am ...</span></div><div class="line">p Hi.count <span class="comment"># =&gt;2</span></div></pre></td></tr></table></figure>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>定义时继承时，在使用class关键字指定类名的同时指定父类名。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> 类名&lt;父类名</span></div><div class="line">  类定义</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RingArray</span> &lt; Array  <span class="comment"># 指定父类</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">[]</span><span class="params">(i)</span></span> 			 <span class="comment"># 重定义运算符[]</span></div><div class="line">    idx = i % size		 <span class="comment"># 计算新索引值</span></div><div class="line">    <span class="keyword">super</span>(idx) 			 <span class="comment"># 调用父类中同名的方法</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">day = RingArray[<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>, <span class="string">"4"</span>, <span class="string">"5"</span>, <span class="string">"6"</span>]</div><div class="line"></div><div class="line">p day[<span class="number">0</span>] <span class="comment"># =&gt;"1"</span></div><div class="line">p day[<span class="number">6</span>] <span class="comment"># =&gt;"1"</span></div><div class="line">p day[<span class="number">9</span>] <span class="comment"># =&gt;"4"</span></div><div class="line">p day[<span class="number">20</span>] <span class="comment"># =&gt;"3"</span></div></pre></td></tr></table></figure>
+<h2 id="alias与undef"><a href="#alias与undef" class="headerlink" title="alias与undef"></a>alias与undef</h2><p>alias的使用场景：1，为方法设置别名。2，在重定义已经存在的方法时，为了能用别名调用原来的方法。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">alias</span> 别名 原名</div><div class="line"><span class="keyword">alias</span> <span class="symbol">:</span>别名 <span class="symbol">:</span>原名</div></pre></td></tr></table></figure>
+<p>undef用于删除已有方法的定义。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">undef</span> 方法名</div><div class="line"><span class="keyword">undef</span> <span class="symbol">:</span>方法名</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A1</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hello</span></span></div><div class="line">    <span class="string">"Hello, I am .."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A2</span> &lt; A1</span></div><div class="line">  <span class="keyword">alias</span> hello1 hello</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hello</span></span></div><div class="line">    <span class="string">"<span class="subst">#&#123;hello1&#125;</span>, again"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A3</span> &lt; A1</span></div><div class="line">  <span class="keyword">undef</span> hello</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">a = A2.new</div><div class="line">p a.hello1 <span class="comment"># =&gt;"Hello, I am .."</span></div><div class="line">p a.hello <span class="comment"># =&gt;"Hello, I am .., again"</span></div><div class="line"></div><div class="line">b = A3.new</div><div class="line">p b.hello <span class="comment"># =&gt;报错</span></div></pre></td></tr></table></figure>
+<h3 id="单例类"><a href="#单例类" class="headerlink" title="单例类"></a>单例类</h3><p>单例类定义被用于定义对象的专属实例方法。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">str1 = <span class="string">"abc"</span></div><div class="line">str2 = <span class="string">"abc"</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> &lt;&lt; str1</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hello</span></span></div><div class="line">    <span class="string">"This is ... "</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p str1.hello <span class="comment"># =&gt;"This is ... "</span></div><div class="line">p str2.hello  <span class="comment"># =&gt;报错</span></div></pre></td></tr></table></figure>
+<p>Ruby中所有的类都是Class的实例，对Class类添加实例方法，就等于给所有的类都添加了该类方法。因此，只希望对每个实例添加方法时，就需要利用单例方法。</p>
+<h3 id="限制方法的调用"><a href="#限制方法的调用" class="headerlink" title="限制方法的调用"></a>限制方法的调用</h3><p>public 以实例方法的形式向外部公开该方法。</p>
+<p>private 在指定接收者的情况下不能调用该方法。（无法从实例的外部访问。）</p>
+<p>protected 在同一个类中可将该方法作为实例方法调用。</p>
+<p>没有指定访问级别的方法默认为public，但initialize方法是个例外，它通常会被定义为private。</p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p><strong>模块与类的区别：模块不能拥有实例，模块不能被继承。</strong></p>
+<h3 id="模块的使用方法"><a href="#模块的使用方法" class="headerlink" title="模块的使用方法"></a>模块的使用方法</h3><p>通过在模块内定义名称，就可以解决命名冲突的问题。</p>
+<p>通过include可以把模块内的方法名、常量名合并到当前的命名空间。</p>
+<p>Mix-in就是讲模块混合到类中。在定义类的时使用include，模块里的方法，常量就都能被类使用。</p>
+<p>如果希望把模块做完模块函数公开给外部使用，就需要用到module_function方法。module_function的参数是表示方法名的符号。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">p Class.superclass <span class="comment"># =&gt;Module</span></div><div class="line">p Class.ancestors <span class="comment"># =&gt;[Class, Module, Object, Kernel, BasicObject]</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Hello</span></span></div><div class="line">  Version = <span class="string">"2.0"</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">hi</span><span class="params">(name)</span></span></div><div class="line">    puts <span class="string">"Hi, <span class="subst">#&#123;name&#125;</span>"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  module_function <span class="symbol">:hi</span> <span class="comment">#如果不写这个方法，下面就不能调用Hello.hi("Tom“)</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p Hello::Version <span class="comment"># =&gt;"2.0"</span></div><div class="line">Hello.hi(<span class="string">"Tom"</span>) <span class="comment"># =&gt;Hi, Tom</span></div><div class="line">p Class.superclass <span class="comment"># =&gt;Module</span></div><div class="line">p Class.ancestors <span class="comment"># =&gt;[Class, Module, Object, Kernel, BasicObject]</span></div><div class="line"></div><div class="line"><span class="keyword">include</span> Hello</div><div class="line">p Class.superclass <span class="comment"># =&gt;Module</span></div><div class="line">p Class.ancestors <span class="comment"># =&gt;[Class, Module, Object, Hello, Kernel, BasicObject]</span></div><div class="line">p Version <span class="comment"># =&gt;"2.0"</span></div><div class="line">hi(<span class="string">"Tom"</span>) <span class="comment"># =&gt;Hi, Tom</span></div></pre></td></tr></table></figure>
+<p>如果希望把模块做完模块函数公开给外部使用，就需要用到module_function方法。module_function的参数是表示方法名的符号。</p>
+<h3 id="Mix-in"><a href="#Mix-in" class="headerlink" title="Mix-in"></a>Mix-in</h3><p><strong>如果想知道类是否包含每个模块时，可以使用include？方法。</strong>被包含的模块的作用就类似于虚拟的父类。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">A</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">math</span></span></div><div class="line">    puts <span class="string">"Math is interest..."</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span></div><div class="line">  <span class="keyword">include</span> A</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">b = B.new</div><div class="line">b.math <span class="comment"># =&gt;Math is interest...</span></div><div class="line">p B.<span class="keyword">include</span>?(A) <span class="comment"># =&gt;true</span></div><div class="line">p B.ancestors <span class="comment"># =&gt;[B, A, Object, Kernel, BasicObject]</span></div><div class="line">p B.superclass <span class="comment"># =&gt;Object</span></div></pre></td></tr></table></figure>
+<h3 id="查找方法"><a href="#查找方法" class="headerlink" title="查找方法"></a>查找方法</h3><p><strong>方法查找自内而外，自上而下。</strong>模块是一个特殊的类，不能实例化。</p>
+<p>同继承关系一样，原类中已经定义了同名的方法时，优先使用该方法。</p>
+<p>在同一个类中包含多个模块时，优先使用最后一个包含的模块。</p>
+<p>嵌套include时，查找顺序也是线性的。</p>
+<p>相同的模块把包含两次以上时，第2次以后的会省略。</p>
+<h3 id="类与Mix-in"><a href="#类与Mix-in" class="headerlink" title="类与Mix-in"></a>类与Mix-in</h3><p>module：声明一个module。include：把一个module的方法注入为实例方法。include可以帮助我们突破继承的限制，通过模块扩展类的功能。extend：把一个module的方法注入为类方法。extend可以帮助我们跨过类，直接通过模块扩展实例的功能。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">ClassMethods</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">cmethod</span></span></div><div class="line">    p <span class="string">"class method"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">InstanceMethods</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">imethod</span></span></div><div class="line">    p <span class="string">"instance method"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span></div><div class="line">  extend ClassMethods</div><div class="line">  <span class="keyword">include</span> InstanceMethods</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">MyClass.cmethod <span class="comment"># =&gt;"class method"</span></div><div class="line">MyClass.new.imethod <span class="comment"># =&gt;"instance method"</span></div></pre></td></tr></table></figure>
+<p><strong>include把模块注入当前类的继承链后面。</strong></p>
+<p><strong>prepend把模块注入当前类的继承链前面。</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">A</span></span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">B</span></span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span></div><div class="line">  <span class="keyword">include</span> A</div><div class="line">  prepend B</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"></div><div class="line">p C.ancestors <span class="comment"># =&gt;[B, C, A, Object, Kernel, BasicObject]</span></div><div class="line">p C.superclass <span class="comment"># =&gt;Object</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/16/2017-3-16计算机反思/" rel="next" title="计算机反思">
+                <i class="fa fa-chevron-left"></i> 计算机反思
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="薛少杰" />
+          <p class="site-author-name" itemprop="name">薛少杰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ruby学习笔记（二）"><span class="nav-number">1.</span> <span class="nav-text">Ruby学习笔记（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类和实例"><span class="nav-number">1.1.</span> <span class="nav-text">类和实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#initialize方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">initialize方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存取器的定义"><span class="nav-number">1.1.2.</span> <span class="nav-text">存取器的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例方法和实例变量"><span class="nav-number">1.1.3.</span> <span class="nav-text">实例方法和实例变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类方法和类变量"><span class="nav-number">1.1.4.</span> <span class="nav-text">类方法和类变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alias与undef"><span class="nav-number">1.3.</span> <span class="nav-text">alias与undef</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单例类"><span class="nav-number">1.3.1.</span> <span class="nav-text">单例类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#限制方法的调用"><span class="nav-number">1.3.2.</span> <span class="nav-text">限制方法的调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">1.4.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块的使用方法"><span class="nav-number">1.4.1.</span> <span class="nav-text">模块的使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mix-in"><span class="nav-number">1.4.2.</span> <span class="nav-text">Mix-in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找方法"><span class="nav-number">1.4.3.</span> <span class="nav-text">查找方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类与Mix-in"><span class="nav-number">1.4.4.</span> <span class="nav-text">类与Mix-in</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">薛少杰</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
