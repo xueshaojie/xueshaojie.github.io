@@ -95,7 +95,7 @@
 1234567891011对象.方法名 (">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ruby学习笔记（一）">
-<meta property="og:url" content="http://yoursite.com/2017/05/16/Ruby学习笔记（一）/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/05/16/Ruby学习笔记（七）/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="方法的调用1，简单的方法调用。
 调用方法的语法：
@@ -106,7 +106,7 @@
 与块一起被调用的方法，我们称为带块的方法。
 带块的方法的语法：
 1234567891011对象.方法名 (">
-<meta property="og:updated_time" content="2017-05-30T14:58:59.000Z">
+<meta property="og:updated_time" content="2017-05-30T14:50:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ruby学习笔记（一）">
 <meta name="twitter:description" content="方法的调用1，简单的方法调用。
@@ -145,7 +145,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/16/Ruby学习笔记（一）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/16/Ruby学习笔记（七）/"/>
 
 
 
@@ -284,7 +284,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/16/Ruby学习笔记（一）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/16/Ruby学习笔记（七）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="薛少杰">
@@ -414,7 +414,7 @@
 <p>如果yield部分有参数，程序就会将其当作块变量传到块里。块里面最后的表达式的值既是块的执行结果，同时也可以作为yield的返回值在块的外部使用。</p>
 <h3 id="参数个数不确定的方法"><a href="#参数个数不确定的方法" class="headerlink" title="参数个数不确定的方法"></a>参数个数不确定的方法</h3><p>通过用“<em> 变量名”的形式来定义参数个数不确定的方法。”</em>  变量名”这种形式的参数，只能在方法定义的参数列表中出现一次。</p>
 <p>使用场景：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">one</span><span class="params">(*a)</span></span></div><div class="line">  a</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p one(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment"># =&gt;[1, 2, 3]</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">two</span><span class="params">(a, *b)</span></span></div><div class="line">  [a, b]</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p two(<span class="number">1</span>) <span class="comment"># =&gt;[1, []]</span></div><div class="line">p two(<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># =&gt;[1, [2]]</span></div><div class="line">p two(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="comment"># =&gt;[1, [2, 3, 4]]</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">to</span><span class="params">(*a, b)</span></span></div><div class="line">  [a, b]</div><div class="line"><span class="keyword">end</span></div><div class="line">p to(<span class="number">1</span>) <span class="comment"># =&gt;[[], 1]</span></div><div class="line">p to(<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># =&gt;[[1], 2]</span></div><div class="line">p to(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="comment"># =&gt;[[1, 2, 3], 4]</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">three</span><span class="params">(a, *b, c)</span></span></div><div class="line">  [a, b, c]</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p three(<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># =&gt;[1, [], 2]</span></div><div class="line">p three(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment"># =&gt;[1, [2], 3]</span></div><div class="line">p three(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>) <span class="comment"># =&gt;[1, [2, 3, 4], 5]</span></div><div class="line">p three(<span class="number">1</span>) <span class="comment"># =&gt;报错，不能这样做。</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">one</span><span class="params">(*a)</span></span></div><div class="line">  a</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p one(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment"># =&gt;[1, 2, 3]</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">two</span><span class="params">(a, *b)</span></span></div><div class="line">  [a, b]</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p two(<span class="number">1</span>) <span class="comment"># =&gt;[1, []]</span></div><div class="line">p two(<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># =&gt;[1, [2]]</span></div><div class="line">p two(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="comment"># =&gt;[1, [2, 3, 4]]</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">to</span><span class="params">(*a, b)</span></span></div><div class="line">  [a, b]</div><div class="line"><span class="keyword">end</span></div><div class="line">p t(<span class="number">1</span>) <span class="comment"># =&gt;[[], 1]</span></div><div class="line">p to(<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># =&gt;[[1], 2]</span></div><div class="line">p to(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="comment"># =&gt;[[1, 2, 3], 4]</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">three</span><span class="params">(a, *b, c)</span></span></div><div class="line">  [a, b, c]</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p three(<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># =&gt;[1, [], 2]</span></div><div class="line">p three(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment"># =&gt;[1, [2], 3]</span></div><div class="line">p three(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>) <span class="comment"># =&gt;[1, [2, 3, 4], 5]</span></div><div class="line">p three(<span class="number">1</span>) <span class="comment"># =&gt;报错，不能这样做。</span></div></pre></td></tr></table></figure>
 <h3 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h3><p>使用关键字参数定义方法的语法如下：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> 方法名<span class="params">(参数<span class="number">1</span>: 参数<span class="number">1</span>的值, 参数<span class="number">2</span>: 参数<span class="number">2</span>的值, ...)</span></span></div><div class="line">  希望执行的处理</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <p>每个参数都指定了默认值，因此可以省略任何一个。</p>
@@ -451,8 +451,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/16/Ruby学习笔记（七）/" rel="next" title="Ruby学习笔记（一）">
-                <i class="fa fa-chevron-left"></i> Ruby学习笔记（一）
+              <a href="/2017/01/15/2017-1-15学习全栈的心得/" rel="next" title="计算机反思">
+                <i class="fa fa-chevron-left"></i> 计算机反思
               </a>
             
           </div>
@@ -461,8 +461,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/19/Ruby学习笔记（二）/" rel="prev" title="Ruby学习笔记（二）">
-                Ruby学习笔记（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/16/Ruby学习笔记（一）/" rel="prev" title="Ruby学习笔记（一）">
+                Ruby学习笔记（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

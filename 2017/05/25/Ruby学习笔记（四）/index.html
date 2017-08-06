@@ -84,29 +84,25 @@
 
 
 
-<meta name="description" content="学习全栈的心得有些事情，自己经历过后，自己才能有切身的体会。
-在自己开始学习全栈的时候，老师就给出了建议：记录学习过程当中的错误。在刚开始的时候，自己还挺重视这条建议。不过，这里的重视只是在心里上面的重视而已，并没有给予实际的行动。
-最近这个星期开始学习计算机的过程中，自己也会遇到一些错误，不过自己总是认为没有必要记录，大部分错误来自自己拼写的错误。直到今天遇到一个错误，花费了自己3个小时，才最终">
+<meta name="description" content="Ruby学习笔记1，!的方法会改变变量自身，而不会改变变量的地址。Rails中！该方法会抛出异常。（替换内容，地址不变。重新赋值，地址改变）
+2，？的方法会返回true|false。这只是一个约束。
+3，在Ruby中nil和false都是“不成立”的意思，或者“否”的意思，其他一切都为true。一个变量的值是nil和未定义是两个概念。
+3，双引号会解释其中的变量，单引号不会，反引号运行sheel命">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机反思">
-<meta property="og:url" content="http://yoursite.com/2017/01/15/2017-1-15学习全栈的心得/index.html">
+<meta property="og:title" content="Ruby学习笔记（四）">
+<meta property="og:url" content="http://yoursite.com/2017/05/25/Ruby学习笔记（四）/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="学习全栈的心得有些事情，自己经历过后，自己才能有切身的体会。
-在自己开始学习全栈的时候，老师就给出了建议：记录学习过程当中的错误。在刚开始的时候，自己还挺重视这条建议。不过，这里的重视只是在心里上面的重视而已，并没有给予实际的行动。
-最近这个星期开始学习计算机的过程中，自己也会遇到一些错误，不过自己总是认为没有必要记录，大部分错误来自自己拼写的错误。直到今天遇到一个错误，花费了自己3个小时，才最终">
-<meta property="og:image" content="http://yoursite.com/images/屏幕快照 2017-01-15 下午11.58.16.png">
-<meta property="og:image" content="http://yoursite.com/images/屏幕快照 2017-01-16 上午12.01.21.png">
-<meta property="og:image" content="http://yoursite.com/images/屏幕快照 2017-01-16 上午12.05.42.png">
-<meta property="og:image" content="http://yoursite.com/images/屏幕快照 2017-01-16 上午1.04.50.png">
-<meta property="og:image" content="http://yoursite.com/images/屏幕快照 2017-01-16 上午1.11.23.png">
-<meta property="og:image" content="http://yoursite.com/images/屏幕快照 2017-01-15 下午9.30.15.png">
-<meta property="og:updated_time" content="2017-05-19T10:52:07.000Z">
+<meta property="og:description" content="Ruby学习笔记1，!的方法会改变变量自身，而不会改变变量的地址。Rails中！该方法会抛出异常。（替换内容，地址不变。重新赋值，地址改变）
+2，？的方法会返回true|false。这只是一个约束。
+3，在Ruby中nil和false都是“不成立”的意思，或者“否”的意思，其他一切都为true。一个变量的值是nil和未定义是两个概念。
+3，双引号会解释其中的变量，单引号不会，反引号运行sheel命">
+<meta property="og:updated_time" content="2017-06-13T14:32:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机反思">
-<meta name="twitter:description" content="学习全栈的心得有些事情，自己经历过后，自己才能有切身的体会。
-在自己开始学习全栈的时候，老师就给出了建议：记录学习过程当中的错误。在刚开始的时候，自己还挺重视这条建议。不过，这里的重视只是在心里上面的重视而已，并没有给予实际的行动。
-最近这个星期开始学习计算机的过程中，自己也会遇到一些错误，不过自己总是认为没有必要记录，大部分错误来自自己拼写的错误。直到今天遇到一个错误，花费了自己3个小时，才最终">
-<meta name="twitter:image" content="http://yoursite.com/images/屏幕快照 2017-01-15 下午11.58.16.png">
+<meta name="twitter:title" content="Ruby学习笔记（四）">
+<meta name="twitter:description" content="Ruby学习笔记1，!的方法会改变变量自身，而不会改变变量的地址。Rails中！该方法会抛出异常。（替换内容，地址不变。重新赋值，地址改变）
+2，？的方法会返回true|false。这只是一个约束。
+3，在Ruby中nil和false都是“不成立”的意思，或者“否”的意思，其他一切都为true。一个变量的值是nil和未定义是两个概念。
+3，双引号会解释其中的变量，单引号不会，反引号运行sheel命">
 
 
 
@@ -134,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/15/2017-1-15学习全栈的心得/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/25/Ruby学习笔记（四）/"/>
 
 
 
 
 
-  <title> 计算机反思 | Hexo </title>
+  <title> Ruby学习笔记（四） | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -273,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/15/2017-1-15学习全栈的心得/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/25/Ruby学习笔记（四）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="薛少杰">
@@ -297,7 +293,7 @@
             
             
               
-                计算机反思
+                Ruby学习笔记（四）
               
             
           </h1>
@@ -312,8 +308,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-15T23:11:15+08:00">
-                2017-01-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-25T22:24:25+08:00">
+                2017-05-25
               </time>
             
 
@@ -335,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/反思日志/" itemprop="url" rel="index">
-                    <span itemprop="name">反思日志</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -368,44 +364,31 @@
       
 
       
-        <h1 id="学习全栈的心得"><a href="#学习全栈的心得" class="headerlink" title="学习全栈的心得"></a>学习全栈的心得</h1><p>有些事情，自己经历过后，自己才能有切身的体会。</p>
-<p>在自己开始学习全栈的时候，老师就给出了建议：记录学习过程当中的错误。在刚开始的时候，自己还挺重视这条建议。不过，这里的重视只是在心里上面的重视而已，并没有给予实际的行动。</p>
-<p>最近这个星期开始学习计算机的过程中，自己也会遇到一些错误，不过自己总是认为没有必要记录，大部分错误来自自己拼写的错误。直到今天遇到一个错误，花费了自己3个小时，才最终把这个错误解决。实际上，自己以前也遇到过同样的问题，自己只知道自己输入了四行命令之后，最终把那个问题解决掉了。可是由于自己并没有记录的习惯，自己不能完全回忆起那四行命令到底是什么。自己在Google上面搜索关键字，并没有找到那四行命令。真实的情况是，那四行命令进行了记录，不过是记录在一张纸上，最近回到家中，并没有带那张纸。</p>
-<p>正确的步骤是：gem ‘devise’</p>
-<p>bundle install</p>
-<p>rails g devise:install</p>
-<p>rails g devise user</p>
-<p>rake db:migrate</p>
-<p>完成之后 重新开 rails s</p>
-<p>自己并没有执行rails s命令，随后自己执行了rails d devise:install 再执行rails d</p>
-<p>devise user出现了下列的错误。</p>
-<p><img src="images/屏幕快照 2017-01-15 下午11.58.16.png" alt="屏幕快照 2017-01-15 下午11.58.16"></p>
-<p>解决方法是：注释掉 app/models/user.rb 当中第4和第5行。注释的方法是：第4行和第五行前面#。或者是将要注释掉的内容删掉。</p>
-<p><img src="images/屏幕快照 2017-01-16 上午12.01.21.png" alt="屏幕快照 2017-01-16 上午12.01.21"></p>
-<p>注释掉config/routes.rb当中第2行。<img src="images/屏幕快照 2017-01-16 上午12.05.42.png" alt="屏幕快照 2017-01-16 上午12.05.42"></p>
-<p>删除掉db/migrate/一串数字_devise_create_users.rb。</p>
-<p>终端机执行：</p>
-<p>rails d devise user</p>
-<p>rails d devise:install</p>
-<p>重新执行</p>
-<p>rails g devise:install</p>
-<p>rails g devise user</p>
-<p>rake db:migrate</p>
-<p><img src="images/屏幕快照 2017-01-16 上午1.04.50.png" alt="屏幕快照 2017-01-16 上午1.04.50"></p>
-<p>发现上述错误，执行 rake db:drop:all，再执行rake db:migrate</p>
-<p><img src="images/屏幕快照 2017-01-16 上午1.11.23.png" alt="屏幕快照 2017-01-16 上午1.11.23"></p>
-<p>终于把这个问题解决掉了，自己今天下午花了三个小时的时间，自己的电脑上解决了这个问题，可是当自己写错误记录的时候，要遇到了很多问题。</p>
-<p>第一个问题是，自己图片瞎改，由于自己不会使用mac当中的预览app，一不小心给截图上面乱画了东西，自己找了半天解决方法，最终没有找到解决方法。<img src="images/屏幕快照 2017-01-15 下午9.30.15.png" alt="屏幕快照 2017-01-15 下午9.30.15"></p>
-<p>最后自己做错，而后寻找答案。自己今天下午在自己的电脑上面，已经做成功了。可是当自己再次做错之后，自己发现按照自己原以为的答案并不能解决问题，通过自己反复试错之后，最终形成了答案。</p>
-<p>这次整理发现了很多问题。一个正常的现象是：自己也不知道自己就把这个问题解决掉了。有可能，这里搜索一个命令，那里搜索一个答案，最终解决了自己所遇到的问题，可是自己最终还是不知道真正起作用的那些命令。有可能自己心里以及知道了那些命令真起作用了，可是自己并不能再进行尝试，很可能自己以为起作用的命令并非是真正起作用的命令。</p>
-<p>当自己整理自己的错误，并且形成文章的时候，自己必须要保证，自己所说的解决方法是真正有效的，进一步让自己知道对于这个问题，那些命令是真正起作用的。</p>
-<h2 id="留言"><a href="#留言" class="headerlink" title="留言"></a>留言</h2><blockquote>
-<p>股票价格的变动是否可以准确预测？</p>
-</blockquote>
-<p>我的理解是，股票价格的变动预测准确和预测不准确，实际上并不是最重要的事情。我认为更有价值的问题是，股票价值的变动是否可以准确预测？价格本身只是衡量价值的一种物品而已。</p>
-<p>预测股票价格的变动，只要我们预测，不管我们是否可以预测准确，我们都会花费大量的时间和精力持续关注股票的价格，这样我们就会得不偿失。</p>
-<p>我们应该思考怎么预测股票价值的变动？只要我们预测准确了股票的价值，那么股票的价格我们自然而得知。价值相对持续周期比较长，而价格的变动是在分秒变化的。预测价值，并不需要我们持续关注，我们可以把自己的注意力放在自己的成长之上。</p>
-<p>股票的价格只是在股票的价值附近波动而已。</p>
+        <h1 id="Ruby学习笔记"><a href="#Ruby学习笔记" class="headerlink" title="Ruby学习笔记"></a>Ruby学习笔记</h1><p>1，!的方法会改变变量自身，而不会改变变量的地址。Rails中！该方法会抛出异常。（替换内容，地址不变。重新赋值，地址改变）</p>
+<p>2，？的方法会返回true|false。这只是一个约束。</p>
+<p>3，在Ruby中nil和false都是“不成立”的意思，或者“否”的意思，其他一切都为true。一个变量的值是nil和未定义是两个概念。</p>
+<p>3，双引号会解释其中的变量，单引号不会，反引号运行sheel命令。</p>
+<p>4，a + 2  在这里+只是一个方法，2是传递给方法的参数。 &lt;&lt;追加 （）可以加，也可以不加。后面在调用方法的时候，需要加上（）。</p>
+<p>5，Hash是无序的，数组是有序的。有些是有序的哈希。</p>
+<p>6，Symbol是String的补充，可以看做为字符串来使用，但是Symbol和String本质上还是不同的，在Ruby中Symbol经常被用来做完Hash的key和一些变化不频繁的字符串来使用。重新定义的时候，地址不会发生改变。字符串重新定义的时候，地址会发生改变。（object_id的方法来查看地址。）用Symbol的方式来访问哈希的数据。。</p>
+<p>7，只有方法的名称来识别方法。所有method都有返回值，方法体最后一行代码的返回值默认会做为方法的返回值，也可以显示的使用return关键字。</p>
+<p>8，block类似于一个方法，可以使用do/end来定义，也可以使用大括号{}。Block变量作用域，迭代内部的值并不会影响外部的值。赋值操作，内部的值会影响外部的值。yield为调用外部block的关键字。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hi</span> <span class="title">name</span></span></div><div class="line">  <span class="keyword">yield</span>(name)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">hi(<span class="string">'code'</span>) &#123; <span class="params">|x|</span> <span class="string">"hello <span class="subst">#&#123;x&#125;</span>"</span> &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hi</span></span></div><div class="line">  <span class="keyword">yield</span></div><div class="line">  <span class="keyword">yield</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">hi &#123; p <span class="string">'ok'</span> &#125;</div></pre></td></tr></table></figure>
+<p>proc相对于定义个方法变量，可以把方法当作参数传递。调用的时候需要用call的方法来传递参数。方法加不加括号都会执行，而不能用方法名称来当作参数传递。</p>
+<p>9，lambda和proc的区别是什么？？？有一个区别是在定义参数的时候porc不用传递，而lambda需要传递。</p>
+<p>unless相对于if的反向断言。</p>
+<p>10，ruby中没有++和- -操作符。</p>
+<p>11，在代码块内部，内部的声明的局部变量是不会被外部变量所访问到的。代码块内部的变量是可以修改外部变量的。</p>
+<p>Block是一个参数，匿名函数，Callback（回调），使用do/end或者{}来定义。</p>
+<p>代码块执行的内容，可以作为返回值，跳出该方法。</p>
+<p>12，rescue发生的异常的情况下执行，else没有发生的异常的情况下执行，ensure任何情况下都执行（文件或数据库的操作）。</p>
+<p>13，首先class_eval是只要类才能调用的，Class#class_eval</p>
+<p>class_eval会重新打开当前类作用域。（没有理解）</p>
+<p>14，instance_eval是所有类实例的方法</p>
+<p>打开的是当前实例作用域。（user类本身是class的实例。a和b是字符串的实例。）</p>
+<p>class_eval和</p>
+<p>15，method_missing</p>
+<p>当前作用域上下文没有找到方法时就会调用mthod_missing。</p>
 
       
     </div>
@@ -432,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/27/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/05/21/Ruby学习笔记（三）/" rel="next" title="Ruby学习笔记（一）">
+                <i class="fa fa-chevron-left"></i> Ruby学习笔记（一）
               </a>
             
           </div>
@@ -442,8 +425,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/16/Ruby学习笔记（七）/" rel="prev" title="Ruby学习笔记（一）">
-                Ruby学习笔记（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/26/Ruby元编程/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -556,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#学习全栈的心得"><span class="nav-number">1.</span> <span class="nav-text">学习全栈的心得</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#留言"><span class="nav-number">1.1.</span> <span class="nav-text">留言</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ruby学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Ruby学习笔记</span></a></li></ol></div>
             
 
           </div>

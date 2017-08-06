@@ -1,0 +1,715 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Ruby学习笔记（三）块是什么块就是在调用方法是，能与参数一起传递的多个处理的集合。接收块的方法会执行必要次数的块。块的执行次数由方法本身决定。
+块的调用方法一般采用以下形式：
+1234567对象.方法名 (参数列表) do |块变量|  希望循环的处理end对象.方法名 (参数列表) &amp;#123; |块变量|  希望循环的处理  &amp;#125;
+块的开头是块变量。块变量就是在执行块的时候，从方法传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby学习笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2017/05/21/Ruby学习笔记（三）/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Ruby学习笔记（三）块是什么块就是在调用方法是，能与参数一起传递的多个处理的集合。接收块的方法会执行必要次数的块。块的执行次数由方法本身决定。
+块的调用方法一般采用以下形式：
+1234567对象.方法名 (参数列表) do |块变量|  希望循环的处理end对象.方法名 (参数列表) &amp;#123; |块变量|  希望循环的处理  &amp;#125;
+块的开头是块变量。块变量就是在执行块的时候，从方法传">
+<meta property="og:updated_time" content="2017-05-21T10:08:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ruby学习笔记（一）">
+<meta name="twitter:description" content="Ruby学习笔记（三）块是什么块就是在调用方法是，能与参数一起传递的多个处理的集合。接收块的方法会执行必要次数的块。块的执行次数由方法本身决定。
+块的调用方法一般采用以下形式：
+1234567对象.方法名 (参数列表) do |块变量|  希望循环的处理end对象.方法名 (参数列表) &amp;#123; |块变量|  希望循环的处理  &amp;#125;
+块的开头是块变量。块变量就是在执行块的时候，从方法传">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/21/Ruby学习笔记（三）/"/>
+
+
+
+
+
+  <title> Ruby学习笔记（一） | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-categories"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/21/Ruby学习笔记（三）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="薛少杰">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ruby学习笔记（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-21T10:31:10+08:00">
+                2017-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Ruby学习笔记（三）"><a href="#Ruby学习笔记（三）" class="headerlink" title="Ruby学习笔记（三）"></a>Ruby学习笔记（三）</h1><h2 id="块是什么"><a href="#块是什么" class="headerlink" title="块是什么"></a>块是什么</h2><p>块就是在调用方法是，能与参数一起传递的多个处理的集合。接收块的方法会执行必要次数的块。块的执行次数由方法本身决定。</p>
+<p>块的调用方法一般采用以下形式：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">对象.方法名 (参数列表) <span class="keyword">do</span> <span class="params">|块变量|</span></div><div class="line">  希望循环的处理</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">对象.方法名 (参数列表) &#123; <span class="params">|块变量|</span></div><div class="line">  希望循环的处理  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>块的开头是块变量。块变量就是在执行块的时候，从方法传进来的参数。不同方法的块变量个数也不相同。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">ary = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="number">2</span>]</div><div class="line">ary.each&#123;<span class="params">|i|</span> p i&#125;  </div><div class="line"><span class="comment"># =&gt;</span></div><div class="line"><span class="string">"a"</span></div><div class="line"><span class="string">"b"</span></div><div class="line"><span class="number">2</span></div><div class="line">ary.each_with_index&#123; <span class="params">|j, x|</span></div><div class="line">  p [j, x]</div><div class="line">&#125;</div><div class="line"><span class="comment"># =&gt;</span></div><div class="line">[<span class="string">"a"</span>, <span class="number">0</span>]</div><div class="line">[<span class="string">"b"</span>, <span class="number">1</span>]</div><div class="line">[<span class="number">2</span>, <span class="number">2</span>]</div></pre></td></tr></table></figure>
+<h2 id="块的使用方法"><a href="#块的使用方法" class="headerlink" title="块的使用方法"></a>块的使用方法</h2><p>在接收块的方法中，实现了循环处理的方法称为迭代器。each方法是一个典型的迭代器。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">a = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>]</div><div class="line">a.each <span class="keyword">do</span> <span class="params">|i|</span></div><div class="line">  puts i.upcase</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment"># =&gt;</span></div><div class="line">A</div><div class="line">B</div><div class="line">C</div><div class="line">D</div><div class="line">E</div></pre></td></tr></table></figure>
+<p>散列会将[key, value]的组合作为数组来提取元素。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sum = <span class="number">0</span></div><div class="line">outcome = &#123;<span class="string">"数学"</span>=&gt;<span class="number">30</span>, <span class="string">"语文"</span>=&gt;<span class="number">40</span>, <span class="string">"英语"</span>=&gt;<span class="number">20</span>&#125;</div><div class="line">outcome.each <span class="keyword">do</span> <span class="params">|p|</span></div><div class="line">  sum += p[<span class="number">1</span>]</div><div class="line">  puts p[<span class="number">0</span>]</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment"># =&gt;</span></div><div class="line">数学</div><div class="line">语文</div><div class="line">英语</div><div class="line">puts <span class="string">"合计: <span class="subst">#&#123;sum&#125;</span>"</span> <span class="comment"># =&gt;合计: 90</span></div></pre></td></tr></table></figure>
+<p>在接收块变量时，多重赋值规则也是同样适用的。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">sum = <span class="number">0</span></div><div class="line">outcome = &#123;<span class="string">"数学"</span>=&gt;<span class="number">30</span>, <span class="string">"语文"</span>=&gt;<span class="number">40</span>, <span class="string">"英语"</span>=&gt;<span class="number">20</span>&#125;</div><div class="line">outcome.each <span class="keyword">do</span> <span class="params">|item, p|</span></div><div class="line">  sum += p</div><div class="line"><span class="keyword">end</span></div><div class="line">puts <span class="string">"合计: <span class="subst">#&#123;sum&#125;</span>"</span> <span class="comment"># =&gt;合计: 90</span></div></pre></td></tr></table></figure>
+<p>File对象被用于读写文件的内容。使用File对象可将文件数据从头到尾读取出来。</p>
+<p>根据文件内容的不同，我们需要考是以字符为单位，还是以行为单位来做读取处理。除了each_line方法外，File对象中还有以字符为单位来循环读取数据的each_char方法，以及以字节为单位进行循环读取的each_byte方法等等。</p>
+<h3 id="确保后处理被执行"><a href="#确保后处理被执行" class="headerlink" title="确保后处理被执行"></a>确保后处理被执行</h3><p>文件使用块时，有方法执行关闭操作，而我们只需将必要的处理记述在块中即可。这样一来可以减少程序的代码量，二来可以防止忘记关闭文件等错误发生。</p>
+<h3 id="替换部分算法"><a href="#替换部分算法" class="headerlink" title="替换部分算法"></a>替换部分算法</h3><p>Array类的sort方法是对数组内元素进行排序的方法，对数组元素进行排序，可以采取多种方法。</p>
+<p>按数字的大小顺序，按字母顺序，按字符串的长度顺序，按数组元素的合计值的大小顺序。</p>
+<p>Array#sort方法没有指定块时，会使用&lt;=&gt;运算符对各个元素进行比较，并根据比较后的结果进行排序。&lt;=&gt;运算符的返回值为-1、0、1中的一个。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a = [<span class="string">"ruby"</span>, <span class="string">"Java"</span>, <span class="string">"to"</span>, <span class="string">"Python"</span>]</div><div class="line">b = a.sort</div><div class="line">p b <span class="comment"># =&gt;["Java", "Python", "ruby", "to"]</span></div><div class="line"></div><div class="line">c = a.sort&#123; <span class="params">|a, b|</span> a&lt;=&gt; b &#125;</div><div class="line">p c <span class="comment"># =&gt;["Java", "Python", "ruby", "to"]</span></div><div class="line"></div><div class="line">d = a.sort&#123; <span class="params">|a, b|</span> a.length &lt;=&gt; b.length &#125;</div><div class="line">p d <span class="comment"># =&gt;["to", "ruby", "Java", "Python"]</span></div></pre></td></tr></table></figure>
+<p>块的最后一个表达式不是指块的最后一行表达式，而是指在块中最后执行的表达式。</p>
+<h2 id="定义带块的方法"><a href="#定义带块的方法" class="headerlink" title="定义带块的方法"></a>定义带块的方法</h2><p>在接受块的方法中执行块时，可以使用yield关键字。而Ruby还能把块当作对象处理。把块当作对象处理后，就可以在接受块的方法之外的其他地方执行块，或者把块交给其他方法执行。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hi</span></span></div><div class="line">  <span class="keyword">yield</span>()</div><div class="line">  <span class="keyword">yield</span>(<span class="number">1</span>)</div><div class="line">  <span class="keyword">yield</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line">  <span class="keyword">yield</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">hi <span class="keyword">do</span> <span class="params">|a|</span></div><div class="line">  p [a]</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment"># =&gt;</span></div><div class="line">[<span class="literal">nil</span>]</div><div class="line">[<span class="number">1</span>]</div><div class="line">[<span class="number">1</span>]</div><div class="line">[<span class="number">1</span>]</div><div class="line"></div><div class="line">hi <span class="keyword">do</span> <span class="params">|a, b, c, d|</span></div><div class="line">  p [a, b, c, d]</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment"># =&gt;</span></div><div class="line">[<span class="literal">nil</span>, <span class="literal">nil</span>, <span class="literal">nil</span>, <span class="literal">nil</span>]</div><div class="line">[<span class="number">1</span>, <span class="literal">nil</span>, <span class="literal">nil</span>, <span class="literal">nil</span>]</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="literal">nil</span>]</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div><div class="line"></div><div class="line">hi <span class="keyword">do</span> <span class="params">|*a|</span></div><div class="line">  p [a]</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment"># =&gt;</span></div><div class="line">[[]]</div><div class="line">[[<span class="number">1</span>]]</div><div class="line">[[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]</div><div class="line">[[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]]</div></pre></td></tr></table></figure>
+<p>在块中使用break，程序会马上返回到调用块的地方。如果在块中使用next，程序就会中断当前处理，并继续执行下面的处理。使用next后，执行块的yield会返回，如果next没有指定任何参数则返回nil，而如果想next 0 这样指定参数，那么该参数值就是返回值。</p>
+<p>Proc对象是能让块作为对象在程序中使用的类。定义Proc对象的典型的方法是，调用Proc.new方法这个带块的方法。在调用Proc对象的call方法之前，块中定义的程序不会被执行。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">hello = Proc.new <span class="keyword">do</span> <span class="params">|name|</span></div><div class="line">  puts <span class="string">"Hello, <span class="subst">#&#123;name&#125;</span>"</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">hello.call(<span class="string">"World"</span>) <span class="comment"># =&gt;Hello, World</span></div><div class="line">hello.call(<span class="string">"Ruby"</span>) <span class="comment"># =&gt;Hello, Ruby</span></div></pre></td></tr></table></figure>
+<p>把块从一个方法传给另一个方法时，首先会通过变量将块作为Proc对象接受，然后再传给另一个方法。在方法定义时，如果末尾的参数使用“&amp;参数名”的形式，Ruby就会自动把调用方法时传进来的块封装为Proc对象。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">total</span><span class="params">(form, to, &amp;block)</span></span></div><div class="line">  sum = <span class="number">0</span></div><div class="line">  form.upto(to) <span class="keyword">do</span> <span class="params">|n|</span></div><div class="line">    <span class="keyword">if</span> block</div><div class="line">      sum +=</div><div class="line">          block.call(n)</div><div class="line">    <span class="keyword">else</span></div><div class="line">      sum += n</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line">  <span class="keyword">return</span> sum</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p total(<span class="number">1</span>, <span class="number">4</span>) <span class="comment"># =&gt;10</span></div><div class="line">p total(<span class="number">1</span>, <span class="number">4</span>) &#123;<span class="params">|n|</span> n * <span class="number">2</span> &#125;<span class="comment"># =&gt;20</span></div><div class="line">p total(<span class="number">1</span>, <span class="number">4</span>) &#123;<span class="params">|n|</span> n ** <span class="number">2</span> &#125; <span class="comment"># =&gt;30</span></div></pre></td></tr></table></figure>
+<p>我们也能将Proc对象作为块传给其他方法处理。这时，我们只需在调用方法时，用”&amp;Proc对象”的形式定义参数就可以了。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">c</span><span class="params">(ary, &amp;block)</span></span></div><div class="line">  ary.each(&amp;block)</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">c [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="keyword">do</span> <span class="params">|item|</span></div><div class="line">  p item</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment"># =&gt;</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure>
+<h2 id="局部变量和块变量"><a href="#局部变量和块变量" class="headerlink" title="局部变量和块变量"></a>局部变量和块变量</h2><p>块内部的命名空间与块外部是共享的。在块外部定义的局部变量，在块中也可以继续使用。而被作为块变量使用的变量，即使与块外部的变量同名，Ruby也会认为它们是两个不同的变量。在块内部定义的变量不能被外部访问。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">1</span></div><div class="line">y = <span class="number">1</span></div><div class="line">ary = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"></div><div class="line">ary.each <span class="keyword">do</span> <span class="params">|x|</span></div><div class="line">  p y = x</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment"># =&gt;</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line">p [x, y] <span class="comment"># =&gt; [1, 3]</span></div><div class="line"></div><div class="line">x = <span class="number">1</span></div><div class="line">ary = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"></div><div class="line">ary.each <span class="keyword">do</span> <span class="params">|x|</span></div><div class="line"> p y = x</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="comment"># =&gt;</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line">p [x, y] <span class="comment"># =&gt;undefined local variable or method `y' for main:Object (NameError)</span></div></pre></td></tr></table></figure>
+<p>在块内部给局部变量赋值的时候，要时刻注意它与块外部的同名变量的关系。大家一定要小心Ruby中的这个陷阱。</p>
+<p>块变量是只能在块内部使用的变量（块局部变量），它不能覆盖外部的局部变量，但Ruby为我们提供了定义块变量以外的块局部变量的语法。通过在块变量后使用;加以区分的方式，来定义块局部变量。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">x = y = z = <span class="number">0</span></div><div class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">a.each <span class="keyword">do</span> <span class="params">|x; y|</span> <span class="comment"># 使用块变量x，块局部变量y</span></div><div class="line">  y = x</div><div class="line">  z = x</div><div class="line">  p [x, y, z]</div><div class="line"><span class="keyword">end</span></div><div class="line">puts</div><div class="line">p [x, y, z] <span class="comment"># =&gt;</span></div><div class="line">[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</div><div class="line">[<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>]</div><div class="line">[<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>]</div><div class="line"></div><div class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/19/Ruby学习笔记（二）/" rel="next" title="Ruby学习笔记（二）">
+                <i class="fa fa-chevron-left"></i> Ruby学习笔记（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/25/Ruby学习笔记（四）/" rel="prev" title="Ruby学习笔记（四）">
+                Ruby学习笔记（四） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar.png"
+               alt="薛少杰" />
+          <p class="site-author-name" itemprop="name">薛少杰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ruby学习笔记（三）"><span class="nav-number">1.</span> <span class="nav-text">Ruby学习笔记（三）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#块是什么"><span class="nav-number">1.1.</span> <span class="nav-text">块是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块的使用方法"><span class="nav-number">1.2.</span> <span class="nav-text">块的使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#确保后处理被执行"><span class="nav-number">1.2.1.</span> <span class="nav-text">确保后处理被执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换部分算法"><span class="nav-number">1.2.2.</span> <span class="nav-text">替换部分算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义带块的方法"><span class="nav-number">1.3.</span> <span class="nav-text">定义带块的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部变量和块变量"><span class="nav-number">1.4.</span> <span class="nav-text">局部变量和块变量</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">薛少杰</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

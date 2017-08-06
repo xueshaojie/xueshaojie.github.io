@@ -84,19 +84,28 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="1，!的方法会改变变量自身，而不会改变变量的地址。Rails中！该方法会抛出异常。（替换内容，地址不变。重新赋值，地址改变）
+2，？的方法会返回true|false。这只是一个约束。
+3，在Ruby中nil和false都是“不成立”的意思，或者“否”的意思，其他一切都为true。一个变量的值是nil和未定义是两个概念。
+3，双引号会解释其中的变量，单引号不会，反引号运行sheel命令。
+4，a +">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/12/27/hello-world/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/06/10/Ruby学习笔记（六）/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-12-27T07:35:01.000Z">
+<meta property="og:description" content="1，!的方法会改变变量自身，而不会改变变量的地址。Rails中！该方法会抛出异常。（替换内容，地址不变。重新赋值，地址改变）
+2，？的方法会返回true|false。这只是一个约束。
+3，在Ruby中nil和false都是“不成立”的意思，或者“否”的意思，其他一切都为true。一个变量的值是nil和未定义是两个概念。
+3，双引号会解释其中的变量，单引号不会，反引号运行sheel命令。
+4，a +">
+<meta property="og:updated_time" content="2017-06-10T15:56:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="1，!的方法会改变变量自身，而不会改变变量的地址。Rails中！该方法会抛出异常。（替换内容，地址不变。重新赋值，地址改变）
+2，？的方法会返回true|false。这只是一个约束。
+3，在Ruby中nil和false都是“不成立”的意思，或者“否”的意思，其他一切都为true。一个变量的值是nil和未定义是两个概念。
+3，双引号会解释其中的变量，单引号不会，反引号运行sheel命令。
+4，a +">
 
 
 
@@ -124,13 +133,13 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/27/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/10/Ruby学习笔记（六）/"/>
 
 
 
 
 
-  <title> Hello World | Hexo </title>
+  <title>  | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -263,7 +272,7 @@ Quick">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/27/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/10/Ruby学习笔记（六）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="薛少杰">
@@ -287,7 +296,7 @@ Quick">
             
             
               
-                Hello World
+                
               
             
           </h1>
@@ -302,8 +311,8 @@ Quick">
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-27T11:17:38+08:00">
-                2016-12-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-10T23:56:22+08:00">
+                2017-06-10
               </time>
             
 
@@ -338,15 +347,31 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>1，!的方法会改变变量自身，而不会改变变量的地址。Rails中！该方法会抛出异常。（替换内容，地址不变。重新赋值，地址改变）</p>
+<p>2，？的方法会返回true|false。这只是一个约束。</p>
+<p>3，在Ruby中nil和false都是“不成立”的意思，或者“否”的意思，其他一切都为true。一个变量的值是nil和未定义是两个概念。</p>
+<p>3，双引号会解释其中的变量，单引号不会，反引号运行sheel命令。</p>
+<p>4，a + 2  在这里+只是一个方法，2是传递给方法的参数。 &lt;&lt;追加 （）可以加，也可以不加。后面在调用方法的时候，需要加上（）。</p>
+<p>5，Hash是无序的，数组是有序的。有些是有序的哈希。</p>
+<p>6，Symbol是String的补充，可以看做为字符串来使用，但是Symbol和String本质上还是不同的，在Ruby中Symbol经常被用来做完Hash的key和一些变化不频繁的字符串来使用。重新定义的时候，地址不会发生改变。字符串重新定义的时候，地址会发生改变。（object_id的方法来查看地址。）用Symbol的方式来访问哈希的数据。。</p>
+<p>7，只有方法的名称来识别方法。所有method都有返回值，方法体最后一行代码的返回值默认会做为方法的返回值，也可以显示的使用return关键字。</p>
+<p>8，block类似于一个方法，可以使用do/end来定义，也可以使用大括号{}。Block变量作用域，迭代内部的值并不会影响外部的值。赋值操作，内部的值会影响外部的值。yield为调用外部block的关键字。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hi</span> <span class="title">name</span> </span></div><div class="line">  <span class="keyword">yield</span>(name)</div><div class="line"><span class="keyword">end</span> </div><div class="line"></div><div class="line">hi(<span class="string">'code'</span>) &#123; <span class="params">|x|</span> <span class="string">"hello <span class="subst">#&#123;x&#125;</span>"</span> &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hi</span> </span></div><div class="line">  <span class="keyword">yield</span> </div><div class="line">  <span class="keyword">yield</span> </div><div class="line"><span class="keyword">end</span> </div><div class="line"></div><div class="line">hi &#123; p <span class="string">'ok'</span> &#125;</div></pre></td></tr></table></figure>
+<p>proc相对于定义个方法变量，可以把方法当作参数传递。调用的时候需要用call的方法来传递参数。方法加不加括号都会执行，而不能用方法名称来当作参数传递。</p>
+<p>9，lambda和proc的区别是什么？？？有一个区别是在定义参数的时候porc不用传递，而lambda需要传递。</p>
+<p>unless相对于if的反向断言。</p>
+<p>10，ruby中没有++和- -操作符。</p>
+<p>11，在代码块内部，内部的声明的局部变量是不会被外部变量所访问到的。代码块内部的变量是可以修改外部变量的。</p>
+<p>Block是一个参数，匿名函数，Callback（回调），使用do/end或者{}来定义。</p>
+<p>代码块执行的内容，可以作为返回值，跳出该方法。</p>
+<p>12，rescue发生的异常的情况下执行，else没有发生的异常的情况下执行，ensure任何情况下都执行（文件或数据库的操作）。</p>
+<p>13，首先class_eval是只要类才能调用的，Class#class_eval</p>
+<p>class_eval会重新打开当前类作用域。（没有理解）</p>
+<p>14，instance_eval是所有类实例的方法</p>
+<p>打开的是当前实例作用域。（user类本身是class的实例。a和b是字符串的实例。）</p>
+<p>class_eval和</p>
+<p>15，method_missing</p>
+<p>当前作用域上下文没有找到方法时就会调用mthod_missing。</p>
 
       
     </div>
@@ -373,15 +398,15 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/05/30/Ruby学习笔记（五）/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/15/2017-1-15学习全栈的心得/" rel="prev" title="计算机反思">
-                计算机反思 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -428,17 +453,8 @@ Quick">
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/avatar.png"
@@ -487,22 +503,6 @@ Quick">
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
