@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startsite
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-categories"></i> <br />
             
-            Categories
+            Categorien
           </a>
         </li>
       
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archive
           </a>
         </li>
       
@@ -225,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -284,7 +284,7 @@
               
                 
                 <a class="post-title-link" href="/2017/08/27/2017-8-26小程序更新/" itemprop="url">
-                  Untitled
+                  Unbenannt
                 </a>
               
             
@@ -298,7 +298,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T00:50:22+08:00">
                 2017-08-27
@@ -341,7 +341,7 @@
             <h1 id="做小程序遇到的问题"><a href="#做小程序遇到的问题" class="headerlink" title="做小程序遇到的问题"></a>做小程序遇到的问题</h1><p>经过自己的努力，自己的小程序终于等到了更新。虽然，在这个过程当中自己遇到了很多问题，但是等到更新的那一霎那，自己感觉太爽了。把自己原来所设想的功能做了出来。一方面自己需要整理自己所遇到的问题，另一方面自己还需要持续更新小程序。</p>
 <p>所遇到的问题：get请求，上传问题，解密（get请求，），小程序端登录（后台），<em>选择</em>器的值如何给form表单，分类浏览（后台的逻辑，前台的请求。）</p>
 <p>get请求的要点：1，请求的格式，URL地址，返回的数据需要获取到。2，需要在后台写好articles.json的接口</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onLoad 生命周期函数--监听页面加载'</span>)</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line"></div><div class="line">  wx.request(&#123;</div><div class="line">    <span class="attr">url</span>: app.globalData.blog_url +<span class="string">'/articles.json'</span>,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;,</div><div class="line">    <span class="attr">header</span>: &#123;</div><div class="line">      <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(res.data);</div><div class="line"></div><div class="line">      <span class="comment">//把获取到的结果放到数据层</span></div><div class="line">      that.setData(&#123;</div><div class="line">        <span class="attr">articles</span>:res.data.articles   </div><div class="line">        <span class="comment">//自己在这里入坑</span></div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onLoad 生命周期函数--监听页面加载'</span>)</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line"></div><div class="line">  wx.request(&#123;</div><div class="line">    <span class="attr">url</span>: app.globalData.blog_url +<span class="string">'/articles.json'</span>,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;,</div><div class="line">    <span class="attr">header</span>: &#123;</div><div class="line">      <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(res.data);</div><div class="line"></div><div class="line">      <span class="comment">//把获取到的结果放到数据层</span></div><div class="line">      that.setData(&#123;</div><div class="line">        <span class="attr">articles</span>:res.data.articles</div><div class="line">        <span class="comment">//自己在这里入坑</span></div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>给服务器端上传问题。在第一次上传的时候自己忘记了执行heroku run rake db:migrate。第二次上传遇到的问题，数据格式不正确。<strong>因为自己在判断方法后面多写了一个？，导致语法错误。</strong>按照提示，自己总是会不由自主地向下看代码，而真正的错误是出现在提示上面。<strong>所以自己以后遇到错误，一定要看代码的上下文。</strong></p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiy4hx5caij31kw0zkqhs.jpg" alt=""></p>
 <p>解密，首先需要在小程序端向后台服务器发起请求，（携带的的参数有code，vi，密文。<strong>在这里不需要对密文进行转义。如果进行转义的话，那么就不能解密成功。用Base64解密之后的内容，一般在最后面有一个=。自己在这个问题上面花费了很多时间。</strong>）</p>
@@ -435,7 +435,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-06T22:54:30+08:00">
                 2017-08-06
@@ -456,7 +456,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -577,7 +577,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-06T21:54:30+08:00">
                 2017-08-06
@@ -598,7 +598,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -729,7 +729,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-25T22:24:25+08:00">
                 2017-05-25
@@ -750,7 +750,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -891,7 +891,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-21T10:31:10+08:00">
                 2017-05-21
@@ -912,7 +912,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1062,7 +1062,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T10:32:27+08:00">
                 2017-05-19
@@ -1083,7 +1083,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1275,7 +1275,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T23:11:15+08:00">
                 2017-05-16
@@ -1296,7 +1296,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1459,7 +1459,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-15T23:11:15+08:00">
                 2017-01-15
@@ -1480,7 +1480,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1628,7 +1628,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">薛少杰</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-27T11:17:38+08:00">
                 2016-12-27
@@ -1750,7 +1750,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Articel</span>
               </a>
             </div>
           
@@ -1759,7 +1759,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Categorien</span>
               </a>
             </div>
           
@@ -1809,7 +1809,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
