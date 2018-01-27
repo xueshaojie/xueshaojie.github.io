@@ -1,0 +1,686 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="做小程序遇到的问题经过自己的努力，自己的小程序终于等到了更新。虽然，在这个过程当中自己遇到了很多问题，但是等到更新的那一霎那，自己感觉太爽了。把自己原来所设想的功能做了出来。一方面自己需要整理自己所遇到的问题，另一方面自己还需要持续更新小程序。
+所遇到的问题：get请求，上传问题，解密（get请求，），小程序端登录（后台），选择器的值如何给form表单，分类浏览（后台的逻辑，前台的请求。）
+get">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/08/27/2017-8-26小程序更新/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="做小程序遇到的问题经过自己的努力，自己的小程序终于等到了更新。虽然，在这个过程当中自己遇到了很多问题，但是等到更新的那一霎那，自己感觉太爽了。把自己原来所设想的功能做了出来。一方面自己需要整理自己所遇到的问题，另一方面自己还需要持续更新小程序。
+所遇到的问题：get请求，上传问题，解密（get请求，），小程序端登录（后台），选择器的值如何给form表单，分类浏览（后台的逻辑，前台的请求。）
+get">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiy4hx5caij31kw0zkqhs.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fiy4o5dy28j31kw0zkdrm.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fiy4nxkvsjj31kw0zk18b.jpg">
+<meta property="og:updated_time" content="2017-08-27T03:49:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="做小程序遇到的问题经过自己的努力，自己的小程序终于等到了更新。虽然，在这个过程当中自己遇到了很多问题，但是等到更新的那一霎那，自己感觉太爽了。把自己原来所设想的功能做了出来。一方面自己需要整理自己所遇到的问题，另一方面自己还需要持续更新小程序。
+所遇到的问题：get请求，上传问题，解密（get请求，），小程序端登录（后台），选择器的值如何给form表单，分类浏览（后台的逻辑，前台的请求。）
+get">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiy4hx5caij31kw0zkqhs.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/27/2017-8-26小程序更新/"/>
+
+
+
+
+
+  <title>  | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-categories"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/27/2017-8-26小程序更新/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="薛少杰">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T00:50:22+08:00">
+                2017-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="做小程序遇到的问题"><a href="#做小程序遇到的问题" class="headerlink" title="做小程序遇到的问题"></a>做小程序遇到的问题</h1><p>经过自己的努力，自己的小程序终于等到了更新。虽然，在这个过程当中自己遇到了很多问题，但是等到更新的那一霎那，自己感觉太爽了。把自己原来所设想的功能做了出来。一方面自己需要整理自己所遇到的问题，另一方面自己还需要持续更新小程序。</p>
+<p>所遇到的问题：get请求，上传问题，解密（get请求，），小程序端登录（后台），<em>选择</em>器的值如何给form表单，分类浏览（后台的逻辑，前台的请求。）</p>
+<p>get请求的要点：1，请求的格式，URL地址，返回的数据需要获取到。2，需要在后台写好articles.json的接口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onLoad 生命周期函数--监听页面加载'</span>)</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line"></div><div class="line">  wx.request(&#123;</div><div class="line">    <span class="attr">url</span>: app.globalData.blog_url +<span class="string">'/articles.json'</span>,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;,</div><div class="line">    <span class="attr">header</span>: &#123;</div><div class="line">      <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(res.data);</div><div class="line"></div><div class="line">      <span class="comment">//把获取到的结果放到数据层</span></div><div class="line">      that.setData(&#123;</div><div class="line">        <span class="attr">articles</span>:res.data.articles   </div><div class="line">        <span class="comment">//自己在这里入坑</span></div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>给服务器端上传问题。在第一次上传的时候自己忘记了执行heroku run rake db:migrate。第二次上传遇到的问题，数据格式不正确。<strong>因为自己在判断方法后面多写了一个？，导致语法错误。</strong>按照提示，自己总是会不由自主地向下看代码，而真正的错误是出现在提示上面。<strong>所以自己以后遇到错误，一定要看代码的上下文。</strong></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiy4hx5caij31kw0zkqhs.jpg" alt=""></p>
+<p>解密，首先需要在小程序端向后台服务器发起请求，（携带的的参数有code，vi，密文。<strong>在这里不需要对密文进行转义。如果进行转义的话，那么就不能解密成功。用Base64解密之后的内容，一般在最后面有一个=。自己在这个问题上面花费了很多时间。</strong>）</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fiy4o5dy28j31kw0zkdrm.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fiy4nxkvsjj31kw0zk18b.jpg" alt=""></p>
+<p>后台服务器接到请求之后，先把参数存起来，然后拼接出一个连接（向微信服务器发起请求），请求成功，微信服务器返回（openid，sessionkey。利用openId创建wx_user的一条记录，sessionkey用作解密的参数）。然后后台服务器进行解密（解密需要用到的参数有：密文，appid，vi，sessionkey，解密的方法写到模型当中，解密的时候控制器直接调用解密方法）。解密之后，就可以获取到用户的信息，把有用的参数存到数据库当中（解密之后有一个openId与openid进行比较，如果相同，更新wx_user表的其他字段）。在wx_user的模型当中，写入一个after_create，创建一条user记录。wx_user和user表的关系是一对一。最后，在wx_user控制器当中写入返回给小程序段的数据。（这里也需要注意格式，直接返回json数据即可，实际上只需要返回wx_user_id即可）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//index.js</span></div><div class="line"><span class="comment">//获取应用实例</span></div><div class="line"><span class="keyword">var</span> app = getApp()</div><div class="line">Page(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">motto</span>: <span class="string">'点击这里，体验小程序！'</span>,</div><div class="line">    <span class="attr">userInfo</span>: &#123;&#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="attr">bindViewTap</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    wx.switchTab(&#123;</div><div class="line">      <span class="attr">url</span>: <span class="string">'../blog/blog'</span></div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="attr">onLoad</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'onLoad'</span>)</div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span></div><div class="line">     <span class="comment">//调用应用实例的方法获取全局数据</span></div><div class="line">    app.getUserInfo(<span class="function"><span class="keyword">function</span>(<span class="params">userInfo</span>)</span>&#123;</div><div class="line">       <span class="comment">//更新数据</span></div><div class="line">    that.setData(&#123;</div><div class="line">       <span class="attr">userInfo</span>:userInfo</div><div class="line">     &#125;)</div><div class="line">   &#125;)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="attr">onShow</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"iv"</span>);</div><div class="line">    wx.login(&#123;<span class="comment">//login流程</span></div><div class="line">      success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;<span class="comment">//登录成功</span></div><div class="line">        <span class="keyword">if</span> (res.code) &#123;</div><div class="line">          <span class="keyword">var</span> code = res.code;</div><div class="line">          wx.getUserInfo(&#123;<span class="comment">//getUserInfo流程</span></div><div class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">res2</span>) </span>&#123;<span class="comment">//获取userinfo成功</span></div><div class="line">            <span class="built_in">console</span>.log(res2.encryptedData);</div><div class="line">            <span class="built_in">console</span>.log(res2);</div><div class="line">            <span class="keyword">var</span> encryptedData = res2.encryptedData;<span class="comment">//一定要把加密串转成URI编码</span></div><div class="line">            <span class="keyword">var</span> iv = res2.iv;</div><div class="line">              <span class="comment">//请求自己的服务器</span></div><div class="line">             Login(code,encryptedData,iv);</div><div class="line">            &#125;</div><div class="line">          &#125;)</div><div class="line"></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="built_in">console</span>.log(<span class="string">'获取用户登录态失败！'</span> + res.errMsg)</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> API_URL = <span class="string">"https://gentle-springs-10865.herokuapp.com/wx_users/wx_login"</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span>  <span class="title">Login</span>(<span class="params">code,encryptedData,iv</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'code='</span>+code+<span class="string">'&amp;encryptedData='</span>+encryptedData+<span class="string">'&amp;iv='</span>+iv);</div><div class="line"> <span class="comment">//创建一个dialog</span></div><div class="line">  wx.showToast(&#123;</div><div class="line">    <span class="attr">title</span>: <span class="string">'正在登录...'</span>,</div><div class="line">    <span class="attr">icon</span>: <span class="string">'loading'</span>,</div><div class="line">    <span class="attr">duration</span>: <span class="number">10000</span></div><div class="line">  &#125;);</div><div class="line">  <span class="comment">//请求服务器</span></div><div class="line">  wx.request(&#123;</div><div class="line">    <span class="attr">url</span>: API_URL,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">      <span class="attr">code</span>:code,</div><div class="line">      <span class="attr">encryptedData</span>:encryptedData,</div><div class="line">      <span class="attr">iv</span>:iv</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">method</span>: <span class="string">'GET'</span>, <span class="comment">// OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT</span></div><div class="line">    header: &#123;</div><div class="line">      <span class="string">'content-type'</span>: <span class="string">'application/json'</span></div><div class="line">    &#125;, <span class="comment">// 设置请求的 header</span></div><div class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</div><div class="line">      <span class="comment">// success</span></div><div class="line">      wx.hideToast();</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'服务器返回'</span>);</div><div class="line">      wx.setStorageSync(<span class="string">'wx_user_id'</span>, res.data.wx_user.id);</div><div class="line"></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">fail</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// fail</span></div><div class="line">      <span class="comment">// wx.hideToast();</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">complete</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// complete</span></div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>自己原来思考的问题是：想着让小程序端如何登录？实际上，自己想解决的问题是：在小程序端写一篇文章，然后这篇文章必须要属于一个用户。这两个问题的描述，第个问题描述的更加具体，相对而言也更加好。解决的的方法是，把后台服务器端返回的wx_user_id存到storage当中（同步存储）。然后提交文章的时候，把storage当中的wx_user_id读取出来，post提交请求的时候携带上wx_user_id这个参数。（拼接成想要的一个连接，不过格式需要注意。自己原来完全不知道如何拼接，通过阅读其他的代码，不断地尝试才找到答案。自己需要记住格式，自己这一次拼接的url地址，只有一个变化的参数，自己需要弄清楚两个两个变化的参数如何拼接。答案在豆瓣电影的小程序当中。）到了后台服务器，先判断有没有wx_user_id这个参数，如果有的话，通过wx_user_id这条记录，然后在通过这条记录找到想对应的user记录，然后把user.id赋值给article.user_id。如果没有这个参数的话，直接把当前用户的id赋值给article.user_id。（这种情况属于后台创建文章的情况。）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">formSubmit: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onLoad 生命周期函数--监听页面加载'</span>)</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">var</span> wx_user_id = wx.getStorageSync(<span class="string">'wx_user_id'</span>);</div><div class="line">  <span class="keyword">this</span>.setData(&#123;</div><div class="line">    <span class="attr">statusIndex</span>:e.detail.value.selector</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">  wx.request(&#123;</div><div class="line"></div><div class="line">    <span class="attr">url</span>: <span class="string">'https://gentle-springs-10865.herokuapp.com/articles?wx_user_id='</span> + wx_user_id,</div><div class="line">    <span class="attr">header</span>: &#123;</div><div class="line">      <span class="comment">// 'Content-Type': 'application/json'</span></div><div class="line">      <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">method</span>: <span class="string">'POST'</span>,</div><div class="line">    <span class="attr">data</span>: Util.json2Form(e.detail.value),</div><div class="line">    <span class="attr">complete</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> res </span>) </span>&#123;</div><div class="line">      that.setData( &#123;</div><div class="line">        <span class="attr">toastHidden</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">toasttext</span>: res.data.reason,</div><div class="line">      &#125;);</div><div class="line">      <span class="keyword">if</span>( res == <span class="literal">null</span> || res.data == <span class="literal">null</span> ) &#123;</div><div class="line">        <span class="built_in">console</span>.error( <span class="string">'网络请求失败'</span> );</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>选择器的值如何给form表单。自己需要隐藏掉携带值。写入需要提交的name，例如article[status]。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-cell weui-cell_select"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-cell__hd weui-cell__hd_in-select-after"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"weui-label"</span>&gt;</span>文章状态<span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'weui-cell__bd'</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">picker</span> <span class="attr">bindchange</span>=<span class="string">"bindStatusChange"</span> <span class="attr">name</span>=<span class="string">"article[status]"</span> <span class="attr">value</span>=<span class="string">"&#123;&#123;statusIndex&#125;&#125;"</span> <span class="attr">range</span>=<span class="string">"&#123;&#123;status&#125;&#125;"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">disabled</span>=<span class="string">"true"</span> <span class="attr">class</span>=<span class="string">"weui-select weui-select_in-select-after"</span> <span class="attr">value</span>=<span class="string">"&#123;&#123;status[statusIndex]&#125;&#125;"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">picker</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>分类浏览。实现的功能是：按全部时可以查看全部的文章，按草稿时可以查看草稿类的文章，按发布时可以查看已经发布的文章。整体是一个滑动的效果。不同的按钮会传输不同的index值。（索引值）自己可以通过索引值判断出是哪个按钮，然后在提交相应的post请求。提交请求之后，分析携带的参数，给予不同的处理。携带的的参数有三种情况：只要wx_user_id，wx_user_id和status=0，wx_user_id和status=1。后台对于这些不同的情况，利用过滤条件返回出不同的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//list.js</span></div><div class="line"><span class="comment">//获取应用实例</span></div><div class="line"><span class="keyword">var</span> app = getApp()</div><div class="line"><span class="keyword">var</span> sliderWidth = <span class="number">96</span>;</div><div class="line">Page(&#123;</div><div class="line"><span class="attr">data</span>: &#123;</div><div class="line">  <span class="comment">// motto: 'Hello World',</span></div><div class="line">  <span class="comment">// userInfo: &#123;&#125;</span></div><div class="line">  <span class="comment">// //</span></div><div class="line">  tabs: [<span class="string">"全部文章"</span>, <span class="string">"草稿"</span>, <span class="string">"已发布"</span>],</div><div class="line">  <span class="attr">activeIndex</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">sliderOffset</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">sliderLeft</span>: <span class="number">2</span></div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="attr">onLoad</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">    wx.getSystemInfo(&#123;</div><div class="line">        <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">            that.setData(&#123;</div><div class="line">                <span class="attr">sliderLeft</span>: (res.windowWidth / that.data.tabs.length - sliderWidth) / <span class="number">2</span>,</div><div class="line">                <span class="attr">sliderOffset</span>: res.windowWidth / that.data.tabs.length * that.data.activeIndex</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;,</div><div class="line"><span class="attr">tabClick</span>: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.setData(&#123;</div><div class="line">        <span class="attr">sliderOffset</span>: e.currentTarget.offsetLeft,</div><div class="line">        <span class="attr">activeIndex</span>: e.currentTarget.id</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">console</span>.log(e.currentTarget.id);</div><div class="line">    <span class="keyword">if</span> (e.currentTarget.id==<span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.onShow();</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.currentTarget.id==<span class="number">1</span>) &#123;</div><div class="line">      <span class="keyword">this</span>.bindViewTap1();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">this</span>.bindViewTap2();</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="attr">onShow</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'onLoad 生命周期函数--监听页面加载'</span>)</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">var</span> wx_user_id = wx.getStorageSync(<span class="string">'wx_user_id'</span>);</div><div class="line"></div><div class="line"></div><div class="line">  wx.request(&#123;</div><div class="line">    <span class="attr">url</span>: app.globalData.blog_url +<span class="string">'/articles/list.json?wx_user_id='</span> + wx_user_id,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;,</div><div class="line">    <span class="attr">header</span>: &#123;</div><div class="line">      <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(res.data);</div><div class="line"></div><div class="line">      <span class="comment">//把获取到的结果放到数据层</span></div><div class="line">      that.setData(&#123;</div><div class="line">        <span class="attr">articles</span>:res.data.articles</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="attr">bindViewTap1</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">var</span> wx_user_id = wx.getStorageSync(<span class="string">'wx_user_id'</span>);</div><div class="line"></div><div class="line"></div><div class="line">  wx.request(&#123;</div><div class="line">    <span class="attr">url</span>: app.globalData.blog_url +<span class="string">'/articles/list.json?status=0&amp;wx_user_id='</span> + wx_user_id,</div><div class="line">    <span class="comment">// url: '/pages/movie/selected/selected?typeId=' + typeId + "&amp;&amp;typeTitle=" + typeTitle,</span></div><div class="line">    data: &#123;&#125;,</div><div class="line">    <span class="attr">header</span>: &#123;</div><div class="line">      <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(res.data);</div><div class="line"></div><div class="line">      <span class="comment">//把获取到的结果放到数据层</span></div><div class="line">      that.setData(&#123;</div><div class="line">        <span class="attr">articles</span>:res.data.articles</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="attr">bindViewTap2</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">var</span> wx_user_id = wx.getStorageSync(<span class="string">'wx_user_id'</span>);</div><div class="line"></div><div class="line"></div><div class="line">  wx.request(&#123;</div><div class="line">    <span class="attr">url</span>: app.globalData.blog_url +<span class="string">'/articles/list.json?status=1&amp;wx_user_id='</span> + wx_user_id,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;,</div><div class="line">    <span class="attr">header</span>: &#123;</div><div class="line">      <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(res.data);</div><div class="line"></div><div class="line">      <span class="comment">//把获取到的结果放到数据层</span></div><div class="line">      that.setData(&#123;</div><div class="line">        <span class="attr">articles</span>:res.data.articles</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>下一个星期需要更新的功能：上传图片，详情页面，删除和编辑功能，整个UI。主要先完成删除，编辑和详情功能。</p>
+<p>更完整的代码，请参考：<a href="https://github.com/xueshaojie/xiaochengxu，wx_blog是小程序端的代码。" target="_blank" rel="external">https://github.com/xueshaojie/xiaochengxu，wx_blog是小程序端的代码。</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/06/git 实战命令/" rel="next" title="git 实战命令">
+                <i class="fa fa-chevron-left"></i> git 实战命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar.png"
+               alt="薛少杰" />
+          <p class="site-author-name" itemprop="name">薛少杰</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#做小程序遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">做小程序遇到的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">薛少杰</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
