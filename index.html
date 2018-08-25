@@ -258,6 +258,224 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/06/Rails部署教程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="薛少杰">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Hexo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/06/Rails部署教程/" itemprop="url">
+                  Rails部署教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">薛少杰</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-06T22:54:30+08:00">
+                2018-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Rails部署教程"><a href="#Rails部署教程" class="headerlink" title="Rails部署教程"></a>Rails部署教程</h1><h2 id="0-基本工具"><a href="#0-基本工具" class="headerlink" title="0 基本工具"></a>0 基本工具</h2><p>一台Centos的云服务器。最终的部署成功的环境：Ruby-2.1.5 nginx-1.6.2</p>
+<h2 id="1-添加deploy"><a href="#1-添加deploy" class="headerlink" title="1 添加deploy"></a>1 添加deploy</h2><p> adduser deploy 增加deploy用户</p>
+<p> passwd deploy 修改deploy用户的密码</p>
+<p> 在root账户下  添加 /etc/sudoers.d/deploy   deploy ALL=(ALL:ALL) ALL</p>
+<h2 id="2-deploy免密码登入"><a href="#2-deploy免密码登入" class="headerlink" title="2 deploy免密码登入"></a>2 deploy免密码登入</h2><p>mkdir ~/.ssh</p>
+<p>touch ~/.ssh/authorized_keys</p>
+<p>回到本机，执行 cat ~/.ssh/id_rsa.pub，把公钥印出来</p>
+<p>chmod 700 ~/.ssh chmod 644 ~/.ssh/authorized_keys</p>
+<h2 id="3-设置服务器闲置自动退出的时间"><a href="#3-设置服务器闲置自动退出的时间" class="headerlink" title="3 设置服务器闲置自动退出的时间"></a>3 设置服务器闲置自动退出的时间</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><p>vi /etc/ssh/sshd_config</p>
+<p>ClientAliveCountMax 60 </p>
+<p>service sshd reload </p>
+<p>LoginGraceTime 20m</p>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><p> vi /root/.ssh/config</p>
+<p>ServerAliveInterval 60</p>
+<h3 id="方法3"><a href="#方法3" class="headerlink" title="方法3"></a>方法3</h3><p>vi /etc/profile</p>
+<p>TMOUT=1800</p>
+<h2 id="4-更新和安装Linux套件"><a href="#4-更新和安装Linux套件" class="headerlink" title="4 更新和安装Linux套件"></a>4 更新和安装Linux套件</h2><p>sudo yum update  (可以通过强制关掉yum进程：#rm -f /var/run/yum.pid)</p>
+<p>sudo yum upgrade</p>
+<p>sudo yum install -y build-essential git-core bison openssl libreadline6-dev curl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 autoconf libc6-dev libpcre3-dev libcurl4-nss-dev libxml2-dev libxslt-dev Imagemagick nodejs libffi-dev</p>
+<p>sudo yum install ImageMagick-devel ImageMagick </p>
+<h2 id="5-安装rvm的依赖包"><a href="#5-安装rvm的依赖包" class="headerlink" title="5 安装rvm的依赖包"></a>5 安装rvm的依赖包</h2><p>sudo yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel libyaml-devel curl-devel sqlite-devel</p>
+<h2 id="6-安装rvm"><a href="#6-安装rvm" class="headerlink" title="6 安装rvm"></a>6 安装rvm</h2><h3 id="方法1-1"><a href="#方法1-1" class="headerlink" title="方法1"></a>方法1</h3><p>curl -sSL <a href="https://rvm.io/mpapis.asc" target="_blank" rel="external">https://rvm.io/mpapis.asc</a> | gpg –import -</p>
+<p>curl -L get.rvm.io | bash -s stable </p>
+<h3 id="方法2-1"><a href="#方法2-1" class="headerlink" title="方法2"></a>方法2</h3><p>gpg –keyserver hkp://keys.gnupg.net –recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</p>
+<p>\curl -sSL <a href="https://get.rvm.io" target="_blank" rel="external">https://get.rvm.io</a> | bash -s stable</p>
+<h3 id="方法3-1"><a href="#方法3-1" class="headerlink" title="方法3"></a>方法3</h3><p>curl -L <a href="https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer" target="_blank" rel="external">https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer</a> | bash -s stable</p>
+<p>source /home/deploy/.rvm/scripts/rvm</p>
+<p>source ~/.profile</p>
+<p>rvm install 2.1.5</p>
+<p>rvm use 2.1.5 –default</p>
+<p>gem sources –add <a href="https://gems.ruby-china.com" target="_blank" rel="external">https://gems.ruby-china.com</a> –remove <a href="https://rubygems.org" target="_blank" rel="external">https://rubygems.org</a></p>
+<p>gem install bundler</p>
+<p>gem install bundle </p>
+<p>查看gem是否变多的方法：du -sh /opt/apps/projects/sutong/shared/bundle/ruby/2.1.0/cache  </p>
+<h2 id="7-安装数据库"><a href="#7-安装数据库" class="headerlink" title="7 安装数据库"></a>7 安装数据库</h2><p>wget <a href="http://repo.mysql.com/mysql57-community-release-el7.rpm" target="_blank" rel="external">http://repo.mysql.com/mysql57-community-release-el7.rpm</a></p>
+<p>sudo rpm -ivh mysql57-community-release-el7.rpm</p>
+<p>sudo yum install -y mysql-server</p>
+<p>sudo yum install mysql-devel</p>
+<p>root 账户下    systemctl start mysqld   service mysqld start</p>
+<h3 id="修改密码-方法1"><a href="#修改密码-方法1" class="headerlink" title="修改密码 方法1"></a>修改密码 方法1</h3><p>cat /var/log/mysqld.log | grep password</p>
+<p>mysql -u root -p</p>
+<p>ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘Xs11111111!’;   </p>
+<h3 id="修改密码-方法2"><a href="#修改密码-方法2" class="headerlink" title="修改密码 方法2"></a>修改密码 方法2</h3><p>在root账户下执行下拉命令</p>
+<p>vi /etc/my.cnf</p>
+<p>找到[mysqld]，在下面添加一行skip-grant-tables</p>
+<p>service mysqld restart</p>
+<p>mysql -uroot -p</p>
+<p>直接按回车，这时不需要输入root密码</p>
+<p>flush privileges;</p>
+<p>ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘Xs11111111!’;</p>
+<p>vi /etc/my.cnf 删除 skip-grant-tables</p>
+<p>service mysqld restart</p>
+<h3 id="修改密码-方法3"><a href="#修改密码-方法3" class="headerlink" title="修改密码 方法3"></a>修改密码 方法3</h3><p>mysql -uroot -p</p>
+<p>use mysql;</p>
+<p>update user set password=password(“Xs11111111!”) where user=’root’;</p>
+<p>flush privileges;</p>
+<p>exit;</p>
+<h2 id="8-安装nginx"><a href="#8-安装nginx" class="headerlink" title="8 安装nginx"></a>8 安装nginx</h2><p>在根目录下面执行（~）</p>
+<p>wget <a href="http://nginx.org/download/nginx-1.6.2.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.6.2.tar.gz</a></p>
+<p>tar zxvf nginx-1.6.2.tar.gz</p>
+<p>cd nginx-1.6.2</p>
+<p>./configure –prefix=/usr/local/nginx –with-http_stub_status_module –with-http_ssl_module </p>
+<p>在安装的过程中看缺少什么包，用下面类似的命令安装缺少的包（sudo yum -y install pcre pcre-devel  然后在重新 ./configure）</p>
+<p> make</p>
+<p> sudo make install</p>
+<p>/usr/local/nginx/sbin/nginx -v</p>
+<h2 id="9-配置nginx，需要在root账户下"><a href="#9-配置nginx，需要在root账户下" class="headerlink" title="9 配置nginx，需要在root账户下"></a>9 配置nginx，需要在root账户下</h2><p>配置 /usr/local/nginx/conf/nginx.conf</p>
+<p>检查配置是否正确 /usr/local/nginx/sbin/nginx -t</p>
+<p>启动 /usr/local/nginx/sbin/nginx</p>
+<p>访问域名或者ip</p>
+<p>/usr/local/nginx/sbin/nginx -s reload            # 重新载入配置文件</p>
+<p>/usr/local/nginx/sbin/nginx -s reopen            # 重启 Nginx</p>
+<p>/usr/local/nginx/sbin/nginx -s stop              # 停止 Nginx</p>
+<p>ps -ef | grep nginx 查看进程</p>
+<p>kill -9 123123（第一个数字）</p>
+<p>tail -f /usr/local/nginx/logs/error.log 查看nginx的错误日志</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/27/2017-8-26小程序更新/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1805,7 +2023,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
